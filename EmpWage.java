@@ -11,7 +11,7 @@ public class EmpWage
 		int i=rand.nextInt(2);
 		int WagePerHour=20, HourPerDay=8, PartTimeHour=4,empHour=0;
 		String empName=" ";
-		int salary=0, totalSal=0,FullTime=1,PartTime=2;
+		int salary=0, totalSal=0,FullTime=1,PartTime=2,day=1;
 		if(i==1)
 		{
 			System.out.println("Employee is present");
@@ -31,7 +31,7 @@ public class EmpWage
 		System.out.println("Enter number of working days");
 		Scanner sc=new Scanner(System.in);
 		int num=sc.nextInt();
-		for(int day=1;day<=num;day++)
+		while(day<=20 && empHour<=100)
 		{
 		int empCheck=rand.nextInt(2);
 		switch(empCheck){
@@ -47,6 +47,7 @@ public class EmpWage
 		salary=(empHour*WagePerHour);
 		System.out.println("Salary of " + empName + " on the " +day+ " is " +salary);
 		totalSal=(totalSal+salary);
+		day++;
 	}
 	System.out.println("Total Salary="+totalSal);
 	}
