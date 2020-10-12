@@ -12,12 +12,10 @@ class empSal{
 					Day_Hour=8;
 					break;
 				case 1:
-					
 					System.out.println("Present Part time employee");
 					Day_Hour=4;
 					break;
 				default:
-					
 					System.out.println("Invalid choice");
 					Day_Hour=0;
 					break;
