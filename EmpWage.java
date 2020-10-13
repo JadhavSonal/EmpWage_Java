@@ -6,16 +6,17 @@ public class EmpWage
 
                 public static final int WagePerHour=20;
                 public static final int HourPerDay=8;
-                public static final int partTimeHoursPerDay=4;
+                public static final int PartTimeHoursPerDay=4;
                 public static final int FullTime=1 , PartTime=2;
 
 
-        public static void empWage( )
+        public static void empWage(String Company_Name,int Day,int empHour)
         {
                 System.out.println("Welcome to Employee Wage Problem");
                 Random rand=new Random();
                 String empName=" ";
-                int day=1,empHour=0,TotalSal=0,Salary;
+                //int empHour=0;
+		int day=1,TotalSal=0,Salary;
                 int i=rand.nextInt(2);
                 if (i == 1)
                 {
@@ -60,8 +61,11 @@ public class EmpWage
         public static void main(String[] args)
         {
 
-                EmpWage1 ew=new EmpWage1();
-                ew.empWage();
+                EmpWage ew=new EmpWage();
+                ew.empWage("TCS",10,15);
+		EmpWage ew1=new EmpWage();
+                ew1.empWage("IBM",15,25);
+
         }
 
 
