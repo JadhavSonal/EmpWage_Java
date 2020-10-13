@@ -10,7 +10,7 @@ public class EmpWage
                 public static final int FullTime=1 , PartTime=2;
 
 
-        public static void empWage(String Company_Name,int Day,int empHour)
+        public static void CalculateEmpWage(String Company_Name,int Day,int empHour)
         {
                 System.out.println("Welcome to Employee Wage Problem");
                 Random rand=new Random();
@@ -61,10 +61,10 @@ public class EmpWage
         public static void main(String[] args)
         {
 
-                EmpWage ew=new EmpWage();
-                ew.empWage("TCS",10,15);
-		EmpWage ew1=new EmpWage();
-                ew1.empWage("IBM",15,25);
+                EmpWage ew1=new EmpWage();
+		EmpWage ew2=new EmpWage();
+                ew1.CalculateEmpWage("TCS",20,25);
+                ew2.CalculateEmpWage("IBM",15,25);
 
         }
 
