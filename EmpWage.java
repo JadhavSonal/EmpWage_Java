@@ -1,72 +1,83 @@
-import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 public class EmpWage
-{
+		
+{		public static  String company;
+	        public static  int EmpWagePerHour;
+                public static  int NumOfWorkingDays;
+                public static  int MaxHoursPerMonth;
+                public static  int FullTime=1 , PartTime=2;
+		public static int TotalWage;
 
-                public static final int WagePerHour=20;
-                public static final int HourPerDay=8;
-                public static final int PartTimeHoursPerDay=4;
-                public static final int FullTime=1 , PartTime=2;
 
+	public  EmpWage(String company,int EmpWagePerHour, int NumOfWorkingDays,int  MaxHoursPerMonth){
+	this.company=company;
+	this. EmpWagePerHour=EmpWagePerHour;
+	this. NumOfWorkingDays=NumOfWorkingDays;
+	this. MaxHoursPerMonth=MaxHoursPerMonth;
 
-        public static void CalculateEmpWage(String Company_Name,int Day,int empHour)
-        {
-                System.out.println("Welcome to Employee Wage Problem");
-                Random rand=new Random();
-                String empName=" ";
-                //int empHour=0;
-		int day=1,TotalSal=0,Salary;
-                int i=rand.nextInt(2);
-                if (i == 1)
-                {
-                        System.out.println("Employee Present");
-                }
-                else
+	}
 
+	public static void CalculateEmpWage( )
+	{
+		System.out.println("Welcome to Employee Wage Problem");
+        	Random rand=new Random();
+		String empName=" ";
+		int EmpHour=0,Days=0,TotalEmpHrs=0;
+		int TotalSal=0;
+
+        	int i=rand.nextInt(2);
+        	if (i == 1)
+        	{
+                	System.out.println("Employee Present");
+        	}
+        	else
+        	{
+                	System.out.println("Employee Absent");
+        	}
+        	System.out.println("****************************************");
+       		//System.out.println("Calculating Daily wage Of Employee");
+        	//int wageperDay=(wageperHour * hourperDay);
+        	//System.out.println("Daily Employee wage:"+wageperDay);
+
+        	System.out.println("****************************************");
+        	//System.out.println("Calculate wages for month");
+        	System.out.println("Employee wage for month");
+		//int num=1;
+        	//System.out.println("Enter number of working days");
+		while(TotalEmpHrs<=MaxHoursPerMonth && Days<= NumOfWorkingDays)
 		{
-                        System.out.println("Employee Absent");
-                }
-                System.out.println("****************************************");
-                System.out.println("Calculating Daily wage Of Employee");
-                int WagePerDay=(WagePerHour * HourPerDay);
-                System.out.println("Daily Employee wage:"+ WagePerDay);
+			Days++;
+			int empCheck=rand.nextInt(2);
+			switch(empCheck){
+			case 0 :
+				empName="FullTime";
+				EmpHour=EmpHour+8;
+				break;
+			case 1 :	
+				empName="PartTime";
+				EmpHour=EmpHour+4;
+				break;
+		}
+		TotalEmpHrs=TotalEmpHrs+EmpHour;
+		System.out.println("Days :"+ Days + " Employee Hour :" +EmpHour);
+		}
+		TotalWage=TotalEmpHrs * EmpWagePerHour;
+	}
+	@Override
+	public String toString( ){
+	return "Total Employee Wage for Company :"+company+" is :"+TotalWage;
+	}
 
-                System.out.println("****************************************");
-                System.out.println("Calculate wages for month");
-                System.out.println("Employee wage");
-
-                System.out.println("Enter number of working days");
-                while(day<=20 && empHour<=100)
-                {
-                        int empCheck=rand.nextInt(2);
-                        switch(empCheck){
-                        case 0 :
-                                empName="Fulltime";
-                                empHour=empHour+8;
-                                break;
-                        case 1 :
-                                empName="Parttime";
-                                empHour=empHour+4;
-                                break;
-                }
-                Salary=(empHour*WagePerHour);
-                System.out.println("Salary of " + empName + " on the " +day+ " is " +Salary);
-                TotalSal=(TotalSal+Salary);
-                day++;
-        }
-        System.out.println("Total Employee Wage="+TotalSal);
-
-}
-        public static void main(String[] args)
-        {
-
-                EmpWage ew1=new EmpWage();
-		EmpWage ew2=new EmpWage();
-                ew1.CalculateEmpWage("TCS",20,25);
-                ew2.CalculateEmpWage("IBM",15,25);
-
-        }
+	public static void main(String[] args)
+	{
+		EmpWage IBM=new EmpWage("IBM",20,5,10);
+		IBM.CalculateEmpWage();
+		System.out.println(IBM);
+		EmpWage TCS=new EmpWage("TCS",10,5,25);
+		TCS.CalculateEmpWage();
+		System.out.println(TCS);
+	}
 
 
 }
