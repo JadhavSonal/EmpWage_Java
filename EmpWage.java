@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 interface EmpWageInterface
 {
-	double empWage(List<EmpWageBuilder> arrayList,int index);
+	void  empWage(List<EmpWageBuilder> arrayList,int index);
 }
 
 class EmpWageBuilder implements  EmpWageInterface{
@@ -58,8 +58,8 @@ class EmpWageBuilder implements  EmpWageInterface{
                 break;
             }
         }
-        System.out.println("EmployeeType and WorkingHours");
-        for ( Map.Entry<String, Integer>  t  :  map.entrySet() )  {
+        System.out.println("Day DailyWage");
+        for ( Map.Entry<Integer,Double>  t  :  map.entrySet() )  {
             System.out.println(t.getKey() +" -> "+t.getValue());
         }
 
@@ -70,7 +70,7 @@ class EmpWageBuilder implements  EmpWageInterface{
     }
 }
 
-public class EmpWage{
+public class EmpWage extends EmpBuilder{
     EmpWage(String Company, int NumOfWorkingDay, double WagePerHour, int WorkHourPerMonth) {
         super( Company, NumOfWorkingDay, WagePerHour,WorkHourPerMonth  );
     
@@ -100,24 +100,24 @@ public class EmpWage{
         List<EmpWageBuilder> arrayList=new ArrayList<>();
 	//EmpWage[] array = new EmpWage[2];
 
-        EmpWage TCS = new EmpWage("TCS",25,250,170);
-        EmpWage IBM = new EmpWage("IBm",30,160,134);
+        EmpBuilder TCS = new EmpBuilder("TCS",25,250,170);
+        EmpBuilder IBM = new EmpBuilder("IBm",30,160,134);
 
         arrayList.add(TCS);
         arrayList.add(IBM);
 
         checkAttendance();
 
-       System.out.println("Multiple Company Details");
-        for(EmpWageBuilder details:arrayList){
-            System.out.println(" ");
-            System.out.println(details);
-        }
+       //System.out.println("Multiple Company Details");
+        //for(EmpWageBuilder details:arrayList){
+          //  System.out.println(" ");
+           // System.out.println(details);
+        //}
         System.out.println("************************************************");
 
         //Employee wage calculation
-        System.out.println("Total Salary = "+TCS.EmpWage(arrayList,0)+"\n");
-        System.out.println("Total Salary = "+IBM.empWage(arrayList,1)+"\n");
+        //System.out.println("Total Salary = "+TCS.EmpWage(arrayList,0)+"\n");
+        //System.out.println("Total Salary = "+IBM.empWage(arrayList,1)+"\n");
     	TCS.empWage(arrayList,0);
 	IBM.empWage(arrayList,1);
 	}
