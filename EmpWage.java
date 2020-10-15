@@ -2,7 +2,12 @@ import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
 
-class EmpWageBuilder{
+interface EmpWageInterface
+{
+	double CalculateEmpWage(EmpWageBuilder[]array,int index);
+}
+
+class EmpWageBuilder implements EmpWageInterface{
     public String Company;
     public int NumOfWorkingDays;
     public double WagePerHour;
@@ -104,7 +109,7 @@ public class EmpWage extends EmpWageBuilder{
             System.out.println(" ");
             System.out.println(details);
         }
-        System.out.println("*----------------------------------------------*");
+        System.out.println("************************************************");
 
         //Employee wage calculation
         System.out.println("Total Salary = "+TCS.CalculateEmpWage(array,0)+"\n");
