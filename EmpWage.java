@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-public class EmpWage
+public class EmpWage 
 		
 {		public static  String company;
 	        public static  int EmpWagePerHour;
@@ -12,9 +12,9 @@ public class EmpWage
 
 	public  EmpWage(String company,int EmpWagePerHour, int NumOfWorkingDays,int  MaxHoursPerMonth){
 	this.company=company;
-	this. EmpWagePerHour=EmpWagePerHour;
-	this. NumOfWorkingDays=NumOfWorkingDays;
-	this. MaxHoursPerMonth=MaxHoursPerMonth;
+	this. EmpWagePerHour= EmpWagePerHour;
+	this. NumOfWorkingDays= NumOfWorkingDays;
+	this. MaxHoursPerMonth= MaxHoursPerMonth;
 
 	}
 
@@ -23,7 +23,7 @@ public class EmpWage
 		System.out.println("Welcome to Employee Wage Problem");
         	Random rand=new Random();
 		String empName=" ";
-		int EmpHour=0,Days=0,TotalEmpHrs=0;
+		int empHr=0,Days=0,TotalEmpHrs=0;
 		int TotalSal=0;
 
         	int i=rand.nextInt(2);
@@ -41,8 +41,8 @@ public class EmpWage
         	//System.out.println("Daily Employee wage:"+wageperDay);
 
         	System.out.println("****************************************");
-        	//System.out.println("Calculate wages for month");
-        	System.out.println("Employee wage for month");
+        	System.out.println("Calculate Employee wages for month");
+        	
 		//int num=1;
         	//System.out.println("Enter number of working days");
 		while(TotalEmpHrs<=MaxHoursPerMonth && Days<= NumOfWorkingDays)
@@ -52,15 +52,15 @@ public class EmpWage
 			switch(empCheck){
 			case 0 :
 				empName="FullTime";
-				EmpHour=EmpHour+8;
+				empHr=empHr+8;
 				break;
-			case 1 :	
+			case 1 :
 				empName="PartTime";
-				EmpHour=EmpHour+4;
+				empHr=empHr+4;
 				break;
 		}
-		TotalEmpHrs=TotalEmpHrs+EmpHour;
-		System.out.println("Days :"+ Days + " Employee Hour :" +EmpHour);
+		TotalEmpHrs=TotalEmpHrs+empHr;
+		System.out.println("Days :"+ Days + " Employee Hour :" +empHr);
 		}
 		TotalWage=TotalEmpHrs * EmpWagePerHour;
 	}
@@ -71,14 +71,13 @@ public class EmpWage
 
 	public static void main(String[] args)
 	{
-		EmpWage IBM=new EmpWage("IBM",20,5,10);
-		IBM.CalculateEmpWage();
-		System.out.println(IBM);
-		EmpWage TCS=new EmpWage("TCS",10,5,25);
+		EmpWage TCS=new EmpWage("TCS",30,5,10);
 		TCS.CalculateEmpWage();
 		System.out.println(TCS);
+		EmpWage IBM=new EmpWage("TCS",15,6,15);
+		IBM.CalculateEmpWage();
+		System.out.println(IBM);
 	}
 
 
 }
-
