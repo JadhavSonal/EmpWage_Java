@@ -8,6 +8,7 @@ interface EmpWageInterface
 }
 
 class EmpWageBuilder implements  EmpWageInterface{
+    Map<String,Double> salaryMap= new HashMap<>();
     public String Company;
     public int NumOfWorkingDays;
     public double WagePerHour;
@@ -20,7 +21,7 @@ class EmpWageBuilder implements  EmpWageInterface{
         this.WorkHourPerMonth= WorkHourPerMonth;
     }
 
-    public double EmpWage(EmpWageBuilder[] arrayList,int index) {
+    public void empWage(List<EmpWageBuilder>[] arrayList,int index) {
         double Wage;
         int HourPerDay = 0;
         String str = "";
@@ -29,10 +30,10 @@ class EmpWageBuilder implements  EmpWageInterface{
         int FullTimeHour=0;
         int PartTimeHour=0;
         Random rand = new Random();
-        Map<String,Integer> map = new HashMap<>();
-        System.out.println("Calculating Wages for a month of "+arrayList[index].Company+" ");
-        for(int i=1;i<=arrayList[index].NumOfWorkingDays;i++) {
-            if(TotalHour <= arrayList[index].WorkHourPerMonth) {
+        Map<Integer,Double> map = new HashMap<>();
+        System.out.println("Calculating Wages for a month of "+arrayList.get(index).Company+" ");
+        for(int i=1;i<=arrayList.get(index).NumOfWorkingDays;i++) {
+            if(TotalHour <= arrayList(index).WorkHourPerMonth) {
                 int empCheck=rand.nextInt(2);
                 switch (empCheck) {
                     case 1:
@@ -50,7 +51,8 @@ class EmpWageBuilder implements  EmpWageInterface{
                         map.put(str,PartTimeHour);
                         break;
                 }
-                Wage = (HourPerDay) * arrayList[index].WagePerHour;
+                Wage = (HourPerDay) * arrayList(index).WagePerHour;
+		map.put(i,wage);
                 TotalSalary += Wage;
             } else {
                 break;
@@ -63,14 +65,15 @@ class EmpWageBuilder implements  EmpWageInterface{
 
         System.out.println();
         System.out.println(Company+" Total Working hours = "+TotalHour);
-        return TotalSalary;
+        //return TotalSalary;
+	 salaryMap.put(arrayList.get(index).Company,TotalSalary);
     }
 }
 
-public class EmpWage extends EmpWageBuilder{
+public class EmpWage{
     EmpWage(String Company, int NumOfWorkingDay, double WagePerHour, int WorkHourPerMonth) {
         super( Company, NumOfWorkingDay, WagePerHour,WorkHourPerMonth  );
-    }
+    
 
     public static void checkAttendance() {
         System.out.println("Checking Whether Employee Present Or Absent");
@@ -86,11 +89,11 @@ public class EmpWage extends EmpWageBuilder{
         	}
     }
 
-    @Override
-    public String toString() {
-             return "Company name "+Company+"\nnumber of working days "+NumOfWorkingDays+"\nWage per Hour "+WagePerHour+"\nWorking Hours Per Month "+WorkHourPerMonth;
-   }
-
+   // @Override
+    //public String toString() {
+      //       return "Company name "+Company+"\nnumber of working days "+NumOfWorkingDays+"\nWage per Hour "+WagePerHour+"\nWorking Hours Per Month "+WorkHourPerMonth;
+   //}
+}
     public static void main(String[] args){
         System.out.println("Welcome to Employee Computation program\n");
 
@@ -105,7 +108,7 @@ public class EmpWage extends EmpWageBuilder{
 
         checkAttendance();
 
-        System.out.println("Multiple Company Details");
+       System.out.println("Multiple Company Details");
         for(EmpWageBuilder details:arrayList){
             System.out.println(" ");
             System.out.println(details);
@@ -113,7 +116,10 @@ public class EmpWage extends EmpWageBuilder{
         System.out.println("************************************************");
 
         //Employee wage calculation
-        System.out.println("Total Salary = "+TCS.empWage(arrayList,0)+"\n");
+        System.out.println("Total Salary = "+TCS.EmpWage(arrayList,0)+"\n");
         System.out.println("Total Salary = "+IBM.empWage(arrayList,1)+"\n");
-    }
+    	TCS.empWage(arrayList,0);
+	IBM.empWage(arrayList,1);
+	}
+}
 }
